@@ -1,0 +1,14 @@
+/*#employeeinfo, #employeecontainer {
+	display: block;
+  float: left;
+  width : 120px;  
+}*/
+
+label, input {
+	display:inline-block;
+}
+
+.employee {
+	display:inline-block;
+	border: 1px solid;
+}
