@@ -1,11 +1,8 @@
 // wait for the page to load
 $(document).ready(function() {
 
-	// declare variables to track salaries - total by month and and object for each
+	// declare variable to track salaries
 	var totalMonthlySalary = 0;
-	var mySalaryObject = {
-		monthlySalary: 0
-	};
 
 	// listen for the submit button
 	$("#employeeinfo").submit(function(event) {
@@ -32,18 +29,15 @@ $(document).ready(function() {
 		// display the total monthly salary in the form
 		$("#employeeinfo").find("#totalmonthlysalary").text("Total Monthly Salary: " + totalMonthlySalary);
 
-		// populate mySalaryObject with the monthly salary entered
-		mySalaryObject.monthlySalary = Math.round(parseInt(values.salary)/12);
-
-		// tie the salary object to the element
-		$("#employeecontainer").children().last().data(mySalaryObject);
+		// put the employee monthly salary into the html element using data function
+		$("#employeecontainer").children().last().data("monthlySalary", Math.round(parseInt(values.salary)/12));
 
 	});
 
 	// listen for the employee remove button to fire
 	$("#employeecontainer").on('click', '.removeButton', function() {
 
-		// pull the salary of the employee from the object that was attached to the element
+		// pull the salary of the employee from the element
 		var minusSalary = $(this).parent().data("monthlySalary");
 
 		// decrease the total salary by the employee's salary
